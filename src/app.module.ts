@@ -5,6 +5,8 @@ import { resolve } from 'path';
 
 const config = () => ({
   NODE_ENV: process.env.NODE_ENV,
+  PORT: process.env.PORT,
+
   PING_TIMEOUT: process.env.PING_TIMEOUT,
 });
 
