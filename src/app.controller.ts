@@ -13,12 +13,15 @@ export class AppController {
   @Get(':ip')
   async getHello(@Param('ip') ip: string): Promise<boolean> {
     try {
+      console.log(`--> Pinging ${ip} with a timeout of ${this.timeout}ms`);
+
       const probe = await ping.promise.probe(ip, {
         timeout: this.timeout,
       });
 
       return probe.alive;
     } catch (error) {
+      console.error(`--> Failed to ping ${ip}`);
       console.error(error);
 
       return false;
